@@ -122,6 +122,14 @@ class Article < Content
 
   end
 
+  def merge_with(article_id)
+    merging_article = Article.find(article_id)
+    merged_body = self.body + merging_article.body
+    self.body = merged_body
+    self.save
+    Article.find(article_id).delete
+  end
+
   def year_url
     published_at.year.to_s
   end
