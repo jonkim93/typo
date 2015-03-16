@@ -13,6 +13,12 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
+    when /^the login page$/
+      '/accounts/login'
+    when /^the edit page for "(.*)"$/
+      article = Article.where(:title=>$1).first
+      article_id = article.guid
+      uri = '/admin/content/edit/'+article_id.to_s
     when /^the home\s?page$/
       '/'
     when /^the new article page$/

@@ -38,6 +38,16 @@ Given /^this comment exists:$/ do |fields|
 	Comment.create!(params)
 end
 
+Given /^I am logged in as "([^"]*)"$/ do |user|
+	account = User.where(:name=>user).first
+	step %Q|I am on the login page|
+	login = account.login
+	step %Q|I fill in "user_login" with "#{login}"|
+	password = account.password
+	step %Q|I fill in "user_password" with "#{password}"|
+	step %Q|I press "Login"|
+end
+
 When /^I edit "([^"]*)"$/ do |page_name|
 	id = Article.where(:title=>page_name).first.guid
 	edit_uri = 'admin/content/edit/#{id}'
