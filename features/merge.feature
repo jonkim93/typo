@@ -5,7 +5,6 @@ Feature:
 
   Background:
     Given the blog is set up
-    And I am logged into the admin panel
     Given this user exists:
       | login        | walt_whitman            |
       | password     | isingamerica            |
@@ -18,7 +17,7 @@ Feature:
       | password     | catinthehat    |
       | email        | lorax@gmail.com|
       | profile_id   | 2              |
-      | name         | Dr. Seuss      |
+      | name         | publisher      |
       | state        | active         |
     Given this article exists:
       | title       | Green Eggs and Ham                       |
@@ -40,7 +39,8 @@ Feature:
       | author      | Walt Whitman        |
 
   Scenario:
-    When I edit "Green Eggs and Ham"
+    Given I am logged in as "admin"
+    And I am on the edit page for "Green Eggs and Ham"
     When I merge with "Leaves of Grass"
     Then I should see "Green Eggs and Ham"
     Then I should not see "Leaves of Grass"

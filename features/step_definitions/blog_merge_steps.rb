@@ -48,12 +48,6 @@ Given /^I am logged in as "([^"]*)"$/ do |user|
 	step %Q|I press "Login"|
 end
 
-When /^I edit "([^"]*)"$/ do |page_name|
-	id = Article.where(:title=>page_name).first.guid
-	edit_uri = 'admin/content/edit/#{id}'
-	visit edit_uri
-end
-
 When /^I merge with "([^"]*)"$/ do |article_name|
 	id = Article.where(:title=>article_name).guid
 	step %Q|I fill in "merge_with" with "#{id}"|
