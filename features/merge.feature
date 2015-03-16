@@ -32,13 +32,15 @@ Feature:
       | article     | Leaves of Grass     |
       | user        | dr_seuss            |
       | body        | bitter butter       |
+      | author      | Dr. Seuss           |
     Given this comment exists:
       | article     | Green Eggs and Ham  |
       | user        | walt_whitman        |
       | body        | i sing america      |
+      | author      | Walt Whitman        |
 
   Scenario:
-    When I go to the edit page for "Green Eggs and Ham"
+    When I edit "Green Eggs and Ham"
     When I merge with "Leaves of Grass"
     Then I should see "Green Eggs and Ham"
     Then I should not see "Leaves of Grass"
