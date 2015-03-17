@@ -5,7 +5,7 @@
 <div class=''>
 	<% if current_user.name=='admin'%>
 	      <h3> Merge Articles </h3>
-		  <%= form_tag action=('/admin/content/merge/' + @article.id.to_s) %>
+		  <%= form_tag ('/admin/content/merge/' + @article.id.to_s), :id=>'merge_with' %>
 		  	<p>
 		    <%= label_tag(:article_id, "Article ID ") %>
 		    <%= text_field_tag(:article_id) %>

@@ -39,13 +39,12 @@ Feature:
       | author      | Walt Whitman        |
 
   Scenario:
-    Given I am logged in as "admin"
+    Given I am logged into the admin panel
     And I am on the edit page for "Green Eggs and Ham"
     When I merge with "Leaves of Grass"
+    And I am on the permalink page for "Green Eggs and Ham"
+    Then show me the page
     Then I should see "Green Eggs and Ham"
     Then I should not see "Leaves of Grass"
-    Then I should see "Dr. Seuss"
-    Then I should not see "Walt Whitman"
-    When I follow "Green Eggs and Ham"
     Then I should see "Do you like green eggs and ham, sam i am"
     Then I should see "resist much, obey little"
