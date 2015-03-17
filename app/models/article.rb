@@ -126,6 +126,7 @@ class Article < Content
     merging_article = Article.find(article_id)
     merged_body = self.body + merging_article.body
     self.body = merged_body
+    self.comments = self.comments + merging_article.comments
     self.save
     Article.find(article_id).delete
   end
