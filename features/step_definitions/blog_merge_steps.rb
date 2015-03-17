@@ -40,6 +40,6 @@ end
 
 When /^I merge with "([^"]*)"$/ do |article_name|
 	id = Article.where(:title=>article_name).first.id
-	step %Q|I fill in "article_id" with "#{id}"|
+	step %Q|I fill in "merge_with" with "#{id}"|
 	step %Q|I press "Merge"|
 end

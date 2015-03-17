@@ -39,11 +39,12 @@ Feature:
       | author      | Walt Whitman        |
 
   Scenario:
+    Given I am on the home page
     Given I am logged into the admin panel
+    Then show me the page
     And I am on the edit page for "Green Eggs and Ham"
     When I merge with "Leaves of Grass"
-    And I am on the permalink page for "Green Eggs and Ham"
-    Then show me the page
+    And I am on the home page
     Then I should see "Green Eggs and Ham"
     Then I should not see "Leaves of Grass"
     Then I should see "Do you like green eggs and ham, sam i am"
