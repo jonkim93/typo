@@ -13,12 +13,17 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
+    when /^the permalink page for "(.*)"$/
+      article = Article.where(:title=>$1).first
+      puts (article.permalink_url)[21..-1]
+      (article.permalink_url)[21..-1]
     when /^the login page$/
       '/accounts/login'
     when /^the edit page for "(.*)"$/
       article = Article.where(:title=>$1).first
-      article_id = article.guid
-      uri = '/admin/content/edit/'+article_id.to_s
+      article_id = article.id
+      (article.edit_url)[21..-1]
+      #uri = '/admin/content/edit/'+article_id.to_s
     when /^the home\s?page$/
       '/'
     when /^the new article page$/

@@ -38,18 +38,8 @@ Given /^this comment exists:$/ do |fields|
 	Comment.create!(params)
 end
 
-Given /^I am logged in as "([^"]*)"$/ do |user|
-	account = User.where(:name=>user).first
-	step %Q|I am on the login page|
-	login = account.login
-	step %Q|I fill in "user_login" with "#{login}"|
-	password = account.password
-	step %Q|I fill in "user_password" with "#{password}"|
-	step %Q|I press "Login"|
-end
-
 When /^I merge with "([^"]*)"$/ do |article_name|
-	id = Article.where(:title=>article_name).guid
+	id = Article.where(:title=>article_name).first.id
 	step %Q|I fill in "merge_with" with "#{id}"|
 	step %Q|I press "Merge"|
 end
